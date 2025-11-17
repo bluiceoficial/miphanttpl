@@ -1,8 +1,8 @@
 {
     "name": "mugomes/miphanttpl",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Gera HTML de forma dinâmica com PHP.",
-    "license": "MIT",
+    "license": "LGPL-2.1-only",
     "_comment": [
         "Copyright (C) 2025 Murilo Gomes Julio"
     ],
