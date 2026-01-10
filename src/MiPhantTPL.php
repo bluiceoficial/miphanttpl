@@ -1,15 +1,25 @@
 <?php
-// Copyright (C) 2025 Murilo Gomes Julio
-// SPDX-License-Identifier: LGPL-2.1-only
+// Copyright (C) 2025-2026 Murilo Gomes Julio
+// SPDX-License-Identifier: MIT
 
-// Site: https://www.mugomes.com.br
+// Site: https://mugomes.github.io
 
 namespace MiPhantTPL;
 
 class MiPhantTPL
 {
-    private array $naofecha = ['meta', 'input', 'br', 'link', 'hr'];
-    private array $atributosemvalor = ['required'];
+    private array $naofecha = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
+    private array $atributosemvalor = ['async', 'autofocus', 'autoplay', 'checked', 'controls', 'default', 'defer', 'disabled', 'download', 'hidden', 'loop', 'multiple', 'muted', 'novalidate', 'open', 'readonly', 'required', 'reversed', 'selected'];
+
+    public function addNotClose(array $values)
+    {
+        $this->naofecha = array_merge($values, $this->naofecha);
+    }
+
+    public function addAttributeNoValue(array $values)
+    {
+        $this->atributosemvalor = array_merge($values, $this->atributosemvalor);
+    }
 
     public function __call(string $element, mixed $arguments): string
     {
@@ -22,8 +32,9 @@ class MiPhantTPL
             if (is_array($conteudo)) {
                 foreach ($conteudo as $atributo => $valor) {
                     /* Verifica se o atributo não tem valor */
-                    if ($this->procurarValores($atributo, $this->atributosemvalor)) {
-                        $sAtributos .= ' ' . $atributo;
+                    $sValor = (empty($atributo) || is_int($atributo)) ? $valor : $atributo;
+                    if ($this->procurarValores($sValor, $this->atributosemvalor)) {
+                        $sAtributos .= ' ' . $valor;
                     } else {
                         $sAtributos .= ' ' . $atributo . '="' . $valor . '"';
                     }
@@ -36,19 +47,25 @@ class MiPhantTPL
         /* Procura se o elemento não fecha */
         if ($this->procurarValores($element, $this->naofecha) !== false) {
             /* Retorna esse código caso o elemento não possa ser fechado */
-            return '<' . $element . $sAtributos . '>' . $sArgumento;
+            if ($element == 'img') {
+                return '<' . $element . $sAtributos . ' />' . $sArgumento;
+            } else {
+                return '<' . $element . $sAtributos . '>' . $sArgumento;
+            }
         } else {
             /* Retorna esse código caso o elemento possa ser fechado */
             return '<' . $element . $sAtributos . '>' . $sArgumento . '</' . $element . '>';
         }
     }
 
-    public function code(mixed $callback) {
+    public function code(mixed $callback)
+    {
         return $callback($this);
     }
 
     /* Retorna o DOCTYPE HTML5 */
-    public function doctype():string {
+    public function doctype(): string
+    {
         return '<!DOCTYPE html>' . "\n";
     }
 
