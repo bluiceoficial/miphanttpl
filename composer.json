@@ -1,13 +1,13 @@
 {
-    "name": "mugomes/miphanttpl",
-    "version": "3.0.0",
+    "name": "bluiceoficial/miphanttpl",
+    "version": "4.0.0",
     "description": "Gera HTML de forma dinâmica com PHP.",
     "license": "MIT",
     "authors": [
         {
             "name": "Murilo Gomes Julio",
-            "email": "mugomesoficial@gmail.com",
-            "homepage": "https://mugomes.github.io"
+            "email": "suporte@bluice.com.br",
+            "homepage": "https://www.bluice.com.br"
         }
     ],
     "_comment": [

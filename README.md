@@ -26,7 +26,7 @@ Cada método chamado representa uma **tag HTML**, funcionando como uma **DSL (Do
 ### Via Composer
 
 ```bash
-composer require mugomes/miphanttpl
+composer require bluiceoficial/miphanttpl
 ```
 
 ### Manual
@@ -208,9 +208,9 @@ echo $tpl->doctype();
 
 **Murilo Gomes Julio**
 
-🔗 [https://mugomes.github.io](https://mugomes.github.io)
+🔗 [https://www.bluice.com.br](https://www.bluice.com.br)
 
-📺 [https://youtube.com/@mugomesoficial](https://youtube.com/@mugomesoficial)
+📺 [https://youtube.com/@bluiceoficial](https://youtube.com/@bluiceoficial)
 
 ---
 
@@ -218,6 +218,6 @@ echo $tpl->doctype();
 
 Copyright (c) 2025-2026 Murilo Gomes Julio
 
-Licensed under the [MIT](https://github.com/mugomes/miphanttpl/blob/main/LICENSE).
+Licensed under the [MIT](https://github.com/bluiceoficial/miphanttpl/blob/main/LICENSE).
 
 All contributions to the MiPhantTPL are subject to this license.
